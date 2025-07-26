@@ -8,6 +8,11 @@ variable "env_name" {
     type = string
 }
 
+variable "owner" {
+    description = "Name of the owner"
+    type = string
+}
+
 variable "vpc_cidr" {
     description = "CIDR of the VPC"
     default = "10.192.0.0/16"

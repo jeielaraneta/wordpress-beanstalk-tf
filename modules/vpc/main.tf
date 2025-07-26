@@ -61,12 +61,12 @@ resource "aws_eip" "natg_eip" {
   count = length(local.public_subnets)
   tags = {
     Name = "${var.vpc_prefix}-${var.env_name}-public-natg-${count.index}"
-    Owner = "CcstMainWebsite"
+    Owner = "${var.owner}"
   }
 }
 data "aws_eips" "natg_eip" {
   tags = {
-    Owner = "CcstMainWebsite"
+    Owner = "${var.owner}"
   }
 
   depends_on = [
@@ -83,7 +83,7 @@ resource "aws_nat_gateway" "public_natg" {
   tags = {
     Name = "${var.vpc_prefix}-${var.env_name}-public-natg"
     LogicalPlacement = "public"
-    Owner = "CcstMainWebsite"
+    Owner = "${var.owner}"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
@@ -98,7 +98,7 @@ data "aws_nat_gateways" "public_natg" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     LogicalPlacement = "public"
-    Owner = "CcstMainWebsite"
+    Owner = "${var.owner}"
   }
 
   depends_on = [aws_nat_gateway.public_natg]

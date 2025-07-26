@@ -2,6 +2,8 @@ variable "region" {}
 
 variable "application_name" {}
 
+variable "owner" {}
+
 variable "environment" {}
 
 variable "keypair" {}

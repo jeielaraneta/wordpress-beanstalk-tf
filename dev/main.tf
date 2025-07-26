@@ -47,6 +47,7 @@ module "vpc" {
   env_name            = var.environment
   vpc_cidr            = "173.168.0.0/16"
   availability_zones  = local.selected_azs[var.environment]
+  owner = var.owner
 }
 
 module "secrets_manager" {

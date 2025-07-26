@@ -1,5 +1,6 @@
 region                  = ""
 application_name        = ""
+owner                   = ""
 environment             = ""
 keypair                 = ""
 beanstalk_ec2_type      = ""
